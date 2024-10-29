@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+  Home
+{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card text-center shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h2>Welcome to the Chat App!</h2>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Connect with others in real-time through our interactive chat rooms. Whether you're here to network, catch up, or learn something new, our app offers a seamless experience.
+            </p>
+            {% if request.user.is_authenticated %}
+            <p class="card-text text-muted">
+              Please join in rooms to start chatting with others.
+            </p>
+            <a href="{% url 'rooms' %}" class="btn btn-primary mt-3">See Rooms</a>
+
+            {% else %}
+            <p class="card-text text-muted">
+              Please log in to start chatting with others.
+            </p>
+            <a href="{% url 'log_in' %}" class="btn btn-primary mt-3">Login</a>
+
+            {% endif %}
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endblock content %}
